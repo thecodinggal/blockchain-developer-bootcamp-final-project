@@ -9,3 +9,8 @@ Real Estate Property Sales and Transfer Project
 5. The money is sent to the seller as soon as the deed is sent back. Proof of sales and proof of ownership will be accessible on the blockchain.
 
 I may be missing some information about how real estate works, and will continue to do my research on both blockchains and real estate sales. Please let me know if there are any issues, thanks!
+
+
+--
+Notes for project (notes for myself):
+-Can use ERC721 (a NFT standard which should be suitable) to properly represent real estate on the chain
