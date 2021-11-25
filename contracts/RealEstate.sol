@@ -3,28 +3,7 @@ pragma solidity ^0.8.0;
 
 import "hardhat/console.sol";
 
-contract Greeter {
-    string private greeting;
-
-    constructor(string memory _greeting) {
-        console.log("Deploying a Greeter with greeting:", _greeting);
-        greeting = _greeting;
-    }
-
-    function greet() public view returns (string memory) {
-        return greeting;
-    }
-
-    function setGreeting(string memory _greeting) public {
-        console.log("Changing greeting from '%s' to '%s'", greeting, _greeting);
-        greeting = _greeting;
-    }
-}
-
-
-
-/*
-
+contract RealEstate {
 //states:
 address public owner = msg.sender;
 uint public registeredHouses;
@@ -38,7 +17,7 @@ enum State {
   Sold
 }
 
-//
+
 struct House {
   string homeAddress;
   uint registeredHouses;
@@ -61,7 +40,7 @@ event LogSold();
 //...
 
 //need to add memory somewhere, figure this out
-function addHouse(string _homeAddress, uint32 _askingPrice, bool forSale) public returns(bool){
+/*function addHouse(string _homeAddress, uint32 _askingPrice, bool forSale) public returns(bool){
   //registers owner and assigns the house. If forSale = true, set State to ForSale. Else set State to Owned
 }
 
@@ -80,4 +59,24 @@ function acceptBid(bool bidAccepted) returns(bool){
 function rejectBid(){
   //reject the bid
 }
+
 */
+
+
+/* -- Not my work below -- */
+/*
+    constructor(string memory _greeting) {
+        console.log("Deploying a Greeter with greeting:", _greeting);
+        greeting = _greeting;
+    }
+
+    function greet() public view returns (string memory) {
+        return greeting;
+    }
+
+    function setGreeting(string memory _greeting) public {
+        console.log("Changing greeting from '%s' to '%s'", greeting, _greeting);
+        greeting = _greeting;
+    }
+    */
+}
