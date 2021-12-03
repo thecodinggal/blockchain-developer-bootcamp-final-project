@@ -54,9 +54,9 @@ function App() {
   };
 
   //request access to the user's Metamask Account
-  async function requestAccount() {
-    await window.ethereum.request({ method: "eth_requestAccounts" });
-  }
+  // async function requestAccount() {
+  //   await window.ethereum.request({ method: "eth_requestAccounts" });
+  // }
 
   async function fetchHouses() {
     if (typeof window.ethereum !== "undefined") {
@@ -146,16 +146,12 @@ function App() {
     switch (state) {
       case 0:
         return "Owned";
-        break;
       case 1:
         return "For Sale";
-        break;
       case 2:
         return "Pending";
-        break;
       case 3:
         return "Sold";
-        break;
       default:
         return "Error";
     }
@@ -168,7 +164,7 @@ function App() {
           <div className="container mx-auto flex flex-wrap items-center justify-between">
             <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
               <a href="/" className="inline-block mr-4">
-                <img src={tenureLogo} className="w-8 inline-block" />
+                <img src={tenureLogo} className="w-8 inline-block" alt="Logo" />
                 <span className="text-3xl pl-2">Tenure</span>
               </a>
             </div>
@@ -276,7 +272,7 @@ function App() {
               </div>
               <Button onclick={fetchHouses}>Search for House</Button>
               <Button onclick={buyHouse} isDisabled={selectedHome ? false : true}>Purchase House</Button>
-              { fetchError == true ? <div className="text-red-500">Error fetching house - Please use a number greater than 0</div> : ''}
+              { fetchError === true ? <div className="text-red-500">Error fetching house - Please use a number greater than 0</div> : ''}
               <div>
 
               </div>
