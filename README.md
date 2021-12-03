@@ -32,7 +32,9 @@ Hardhat unit test should deploy immediately
 
 ### Directory Structure
 `root`: Contain's React frontend project. /src file has the pages
+
 `contracts` : Smart contracts that have been deployed to the Ropsten testnet
+
 `test` : Hardhat tests for smart contract
 
 ### Workflow
