@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ethers } from "ethers";
 import { Button } from "./button";
-import RealEstate from '../artifacts/contracts/RealEstate.sol/RealEstate.json';
+
 
 
 export default function Login(props, realEstateAddress){

@@ -1,11 +1,10 @@
-import { useState, useEffect, componentDidMount } from "react";
+import { useState, useEffect } from "react";
 import Login from "./components/Login.js";
 import { ethers } from "ethers";
 import FullImageSection from "./components/fullImageSection.js";
 import { Button } from "./components/button.js";
-
 import tenureLogo from "./images/tenure-icon.png";
-import RealEstate from "./artifacts/contracts/RealEstate.sol/RealEstate.json";
+import RealEstate from "./static/RealEstateABI";
 
 let realEstateAddress;
 if(window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"){
@@ -64,7 +63,7 @@ function App() {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const contract = new ethers.Contract(
         realEstateAddress,
-        RealEstate.abi,
+        RealEstate,
         provider
       );
       try {
@@ -87,7 +86,7 @@ function App() {
       const signer = provider.getSigner(); //For signing transactions
       const contract = new ethers.Contract(
         realEstateAddress,
-        RealEstate.abi,
+        RealEstate,
         signer
       );
       try {
@@ -110,7 +109,7 @@ function App() {
       const signer = provider.getSigner(); //For signing transactions
       const contract = new ethers.Contract(
         realEstateAddress,
-        RealEstate.abi,
+        RealEstate,
         signer
       );
       try{
@@ -132,7 +131,7 @@ function App() {
       const signer = provider.getSigner(); //For signing transactions
       const contract = new ethers.Contract(
         realEstateAddress,
-        RealEstate.abi,
+        RealEstate,
         signer
       );
       const transaction = await contract.buyHouse(ethers.BigNumber.from(selectedHome), {
