@@ -26,7 +26,7 @@ module.exports = {
     hardhat: { chainId: 1337 },
     ropsten: {
       url: "https://ropsten.infura.io/v3/148757353edf41009b14368d3c41d8f2",
-      accounts: [`0x${process.env["PRIVATE_KEY"]}`]
+      //accounts: [`0x${process.env["PRIVATE_KEY"]}`]
     }
   },
   solidity: "0.8.4",
