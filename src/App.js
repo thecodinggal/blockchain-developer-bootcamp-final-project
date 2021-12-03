@@ -12,7 +12,7 @@ if(window.location.hostname === "localhost" || window.location.hostname === "127
   realEstateAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"; //localhost address
 }
 else{
-  realEstateAddress = "0x1b19Fd17096447B670Adeb0bFF4FD918Ce2AFC7E"; //ropsten address
+  realEstateAddress = "0x99bb33af116A8FB2f0a367287C1CF49160BFcb54"; //ropsten address
 }
 
 
@@ -63,7 +63,7 @@ function App() {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const contract = new ethers.Contract(
         realEstateAddress,
-        RealEstate,
+        RealEstate.abi,
         provider
       );
       try {
@@ -86,7 +86,7 @@ function App() {
       const signer = provider.getSigner(); //For signing transactions
       const contract = new ethers.Contract(
         realEstateAddress,
-        RealEstate,
+        RealEstate.abi,
         signer
       );
       try {
@@ -109,7 +109,7 @@ function App() {
       const signer = provider.getSigner(); //For signing transactions
       const contract = new ethers.Contract(
         realEstateAddress,
-        RealEstate,
+        RealEstate.abi,
         signer
       );
       try{
@@ -131,7 +131,7 @@ function App() {
       const signer = provider.getSigner(); //For signing transactions
       const contract = new ethers.Contract(
         realEstateAddress,
-        RealEstate,
+        RealEstate.abi,
         signer
       );
       const transaction = await contract.buyHouse(ethers.BigNumber.from(selectedHome), {

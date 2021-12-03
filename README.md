@@ -1,7 +1,7 @@
 # FINAL PROJECT
 
 ## Depoloyed Version
---LINK HERE--
+(https://objective-bassi-793790.netlify.app/)
 
 ## How to run this project locally:
 
@@ -40,5 +40,6 @@ From the root (Contracts and frontend can be run from the same location):
 --ADD HERE--
 
 ### Smart Contract Unit Tests
-- run `npx hardhat compile`
+- in root file, run `npx hardhat compile`
 - run `npx hardhat test`
+Hardhat unit test should deploy immediately

@@ -2,13 +2,17 @@
 pragma solidity >=0.8.0 <0.9.0;
 
 import "hardhat/console.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 /// @title  Real Estate Exchange Platform
-/// @author thecodinggal
-/// @notice The smart contract has a lot of improvements that can be made. Feedback is highly welcomed
-/// @dev   
-contract RealEstate {
-    address public owner = msg.sender;
+/// @author github: thecodinggal
+/// @notice Real Estate allows an owner of a house to list their house, then confirm that it is for sale. Then a buyer can purchase the home
+/// @dev    Add bidding for future implementation
+contract RealEstate is Ownable {
+    
+    /// @dev OpenZeplin Ownable takes care of this
+    //address public owner = msg.sender; 
+
     uint256 public registeredHouseCount;
     mapping(uint256 => House) public houses;
 
@@ -37,10 +41,10 @@ contract RealEstate {
         address payable buyer;
     }
 
-    /// @notice Sets owner to transaction sender
-    constructor() {
-        owner = msg.sender; 
-    }
+    /// @notice OpenZeplin constructor takes care of setting the msg.sender to the deployer
+    // Ownable.constructor() {
+    //     owner = msg.sender;
+    // }
 
     /// @notice All Log Events
     event LogAddedHouse(uint _registeredHouseNum);
@@ -51,11 +55,11 @@ contract RealEstate {
 
 
 
-    /// @notice checks to see is owner is the transaction sender
-    modifier isOwner() {
-        require(msg.sender == owner, "msg sender is not owner");
-        _;
-    }
+    /// @notice This has been replaced by OpenZeplin's onlyOwner()
+    // modifier isOwner() {
+    //     require(msg.sender == owner, "msg sender is not owner");
+    //     _;
+    // }
 
     /// @notice checks for price > 0
     /// @dev    use for bidding in the future
@@ -134,11 +138,11 @@ contract RealEstate {
         houses[_houseNum].buyer = payable(msg.sender);
         houses[_houseNum].state = State.Sold;
         emit LogSold(_houseNum);
-        //now transfer ownership
+        //now transfer home ownership
         houses[_houseNum].homeOwner = payable(msg.sender);
         houses[_houseNum].buyer = payable(address(0));
-        owner = msg.sender;
         houses[_houseNum].state = State.Owned;
+        houses[_houseNum].askingPrice = 0;
         emit LogOwned(_houseNum);
         return true;
     }
@@ -160,18 +164,21 @@ contract RealEstate {
 
 
 /// @notice --- EVERYTHING BELOW IS TO IMPLEMENT LATER ON ---
+    /// @notice Wanted to add this but was worried about making frontend more complicated.
+    /// @notice Will add this once I am better at frontend to ABI calls
+    // modifier notYourHouse(uint houseNum){
+    //     require(houses[houseNum].homeOwner !== msg.sender);
+    // }
+    
+    /// @notice future implementation to charge a small fee for auditing and selling a house
+    //function chargeFee() public isOwner() returns(bool){}
 
-    /// @notice To Add Later ---
+    /// @notice logs for bids
     //event LogBidSent(uint256 _registeredHouseNum);
     //event LogBidAccepted(uint256 _registeredHouseNum);
     //event LogBidRejected(uint256 _registeredHouseNum);
 
-    /// @notice Wanted to add this but was worried about making frontend more complicated.
-    // modifier notYourHouse(uint houseNum){
-    //     require(houses[houseNum].homeOwner !== msg.sender);
-    // }
-
-    /// @dev allows a buyer to submit a bid... figure out if I want to keep the funds on hold
+    /// @dev allows a buyer to submit a bid... figure out if I want to keep the funds on hold by owner
     // function placeBid(
     //     uint32 price,
     //     address buyer,
