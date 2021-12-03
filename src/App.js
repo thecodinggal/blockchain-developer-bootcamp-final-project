@@ -33,7 +33,9 @@ function App() {
   const [priceSuccess, setPriceSuccess] = useState(0);  //validaton msh for sellHouse
 
 
-  const [fetchError, setFetchError] = useState(false);
+  const [fetchError, setFetchError] = useState(false);  // Error message for fetching house data
+
+  const [houseSold, setHouseSold] = useState(0);      //For determining if transaction went through successfully
 
   useEffect(() => {
     if (typeof window.ethereum !== "undefined") {
@@ -134,11 +136,17 @@ function App() {
         RealEstate.abi,
         signer
       );
-      const transaction = await contract.buyHouse(ethers.BigNumber.from(selectedHome), {
+      try {
+        const transaction = await contract.buyHouse(ethers.BigNumber.from(selectedHome), {
         value: ethers.BigNumber.from(homeLists[2]),
           //ethers.utils.parseEther("5")),
       });
           await transaction.wait();
+          setHouseSold(1);
+      }
+      catch{
+        setHouseSold(2);  //error
+      }
     }
   }
 
@@ -273,6 +281,7 @@ function App() {
               <Button onclick={fetchHouses}>Search for House</Button>
               <Button onclick={buyHouse} isDisabled={selectedHome ? false : true}>Purchase House</Button>
               { fetchError === true ? <div className="text-red-500">Error fetching house - Please use a number greater than 0</div> : ''}
+              { houseSold === 1 ? <div className="text-xl">Congratulations! You have successfully purchased this house</div> : houseSold === 2 ? <div className="text-red-500">Error: Transaction failed. You may not have enough ETH</div> : ''}
               <div>
 
               </div>
