@@ -1,3 +1,5 @@
+
+
 // We require the Hardhat Runtime Environment explicitly here. This is optional
 // but useful for running the script in a standalone fashion through `node <script>`.
 //
@@ -14,12 +16,13 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
-  const Greeter = await hre.ethers.getContractFactory("Greeter");
-  const greeter = await Greeter.deploy("Hello, Hardhat!");
+  const RealEstate = await hre.ethers.getContractFactory("RealEstate");
+  const realestate = await RealEstate.deploy();
 
-  await greeter.deployed();
 
-  console.log("Greeter deployed to:", greeter.address);
+  await realestate.deployed();
+
+  console.log("Real Estate contract deployed to:", realestate.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

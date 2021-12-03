@@ -1,39 +1,44 @@
-# Using Hardhard, Ether.JS, and React.JS
+# FINAL PROJECT
 
-To run the project:
+## Depoloyed Version
+--LINK HERE--
 
-```shell
-npm install
-npm start
-```
+## How to run this project locally:
 
-To Compile ABI:
-```shell
-npx hardhat compile
-```
+### Prerequisites
+ - Node.js >= 16.8.0
+ - Hardhat and Ethers
+ - Npm/npx
+ - git checkout master
 
-To deploy and use a local network/blockchain for testing:
-```shell
-npx hardhat node
-```
+ ### Contracts
+From the root (Contracts and frontend can be run from the same location):
+ - run `npm install` to install all dependecies (Hardhat, Waffle, React, etc)
+  - run `npx hardhat compile`
+ - run `npx hardhat node`
+ - run `npx hardhat run scripts/deploy.js --network localhost`
+ - run `npm start` to run local website
+ -  development network id is 1337 localhost 
+ - open [localhost:3000](http://localhost:3000)
 
-To deploy the contract to the test network:
-```shell
-npx hardhat run scripts/deploy.js --network localhost
-```
+### Instructions
+--ADD HERE--
 
+### Screencast link
+--ADD HERE--
 
+### Public Ethereum Wallet for Certification
+--ADD HERE--
 
----
+### Project Description
+--ADD HERE--
 
-Other hardhat commands:
+### Simple Workflow
+--ADD HERE--
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+### Future Imporvements
+--ADD HERE--
+
+### Smart Contract Unit Tests
+- run `npx hardhat compile`
+- run `npx hardhat test`
